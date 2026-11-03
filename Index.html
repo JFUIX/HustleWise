@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Waypoint – Find your way forward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b10;--alt:#12121a;--surf:#16161f;--ink:#f4f4f7;--mute:#9d9db2;--line:#272736;--blue:#26ffb0;--onblue:#0b0b10;--lime:#26ffb0;--vio:#8b6bff;--ok:#5be3a6;--warn:#ff7a6b;--glow:.32;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f6f0;--alt:#ecece2;--surf:#fff;--ink:#0b0b10;--mute:#5c5c70;--line:#dedfd2;--blue:#4d33e6;--onblue:#fff;--ok:#0f8f62;--warn:#d4402f;--glow:.16}}
+:root[data-theme="light"]{--bg:#f6f6f0;--alt:#ecece2;--surf:#fff;--ink:#0b0b10;--mute:#5c5c70;--line:#dedfd2;--blue:#4d33e6;--onblue:#fff;--ok:#0f8f62;--warn:#d4402f;--glow:.16}
+html{height:100%;scroll-padding-top:84px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 17px/1.65 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Space Grotesk",system-ui,sans-serif;margin:0;font-weight:700;letter-spacing:-.04em}
+h1{font-size:clamp(2.8rem,7.4vw,6.2rem);line-height:.98}
+h2{font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1.04}
+h3{font-size:1.25rem;line-height:1.25;letter-spacing:-.025em}
+p{margin:0 0 1em;max-width:60ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--vio);outline-offset:3px;border-radius:10px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 26px}
+section{padding:100px 0}
+.hl{background:var(--lime);color:#0b0b10;padding:0 .16em;border-radius:.18em;display:inline-block;transform:rotate(-2deg)}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:700 1.4rem "Space Grotesk",sans-serif;text-decoration:none;display:flex;gap:10px;align-items:center;letter-spacing:-.04em}
+.logo i{width:28px;height:28px;border-radius:10px;background:var(--lime);display:block;position:relative}
+.logo i::after{content:"";position:absolute;inset:8px;border-radius:50%;background:#0b0b10}
+nav{display:flex;gap:26px;font-size:.93rem;font-weight:500;align-items:center}
+nav a{text-decoration:none;color:var(--mute)}nav a:hover{color:var(--ink)}
+@media(max-width:760px){nav a:not(.cta-s){display:none}}
+.btn{display:inline-block;font:700 .95rem "DM Sans",sans-serif;padding:14px 26px;border-radius:999px;border:1px solid var(--line);background:var(--surf);color:var(--ink);cursor:pointer;text-decoration:none;transition:transform .15s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.btn.p{background:var(--lime);border-color:var(--lime);color:#0b0b10}
+.cta-s{background:var(--lime);color:#0b0b10!important;padding:10px 20px;border-radius:999px;font-weight:700}
+.hero{padding:76px 0 70px;text-align:center;background:radial-gradient(45% 45% at 18% 0,rgba(38,255,176,var(--glow)),transparent 70%),radial-gradient(40% 40% at 88% 8%,rgba(38,255,176,calc(var(--glow) * .6)),transparent 70%),var(--bg)}
+.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--surf);border-radius:999px;padding:7px 16px;font-size:.88rem;font-weight:600;color:var(--mute);margin-bottom:28px}
+.badge b{color:var(--blue)}
+.hero h1{max-width:14ch;margin:0 auto}
+.hero p.lead{font-size:1.2rem;color:var(--mute);margin:28px auto 0;max-width:54ch}
+.idea{display:flex;gap:6px;margin:36px auto 16px;max-width:620px;padding:7px;border:1px solid var(--line);border-radius:999px;background:var(--surf)}
+.idea input{flex:1;min-width:0;font:inherit;padding:12px 18px;border:0;background:transparent;color:var(--ink);outline:0}
+.idea:focus-within{border-color:var(--vio)}
+@media(max-width:560px){.idea{flex-direction:column;border-radius:26px}.idea input{text-align:center}}
+.free{font-size:.92rem;color:var(--mute)}
+.free b{color:var(--ok)}
+.bento{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px;margin-top:64px;text-align:left}
+@media(max-width:900px){.bento{grid-template-columns:1fr}}
+.bc{background:var(--surf);border:1px solid var(--line);border-radius:28px;padding:26px}
+.bc small{display:block;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:16px}
+.bub{padding:11px 16px;border-radius:18px;font-size:.92rem;max-width:88%;margin-bottom:9px}
+.bub.a{background:var(--alt);border-bottom-left-radius:5px}
+.bub.u{background:var(--lime);color:#0b0b10;margin-left:auto;border-bottom-right-radius:5px;font-weight:500}
+.ring{width:132px;height:132px;border-radius:50%;background:conic-gradient(var(--vio) 0 64%,var(--line) 0);display:grid;place-items:center;margin:6px auto 14px}
+.ring span{width:98px;height:98px;border-radius:50%;background:var(--surf);display:grid;place-items:center;font:700 2.2rem "Space Grotesk",sans-serif;letter-spacing:-.04em}
+.bc .cap{text-align:center;color:var(--mute);font-size:.88rem;margin:0 auto}
+.mo{display:inline-block;padding:8px 15px;border:1px solid var(--line);border-radius:999px;font-size:.88rem;margin:0 6px 8px 0;font-weight:500}
+.mo.on{background:var(--vio);border-color:var(--vio);color:#fff}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:54px}
+.three>div{border:1px solid var(--line);border-radius:30px;padding:34px;background:var(--surf);min-height:260px;transition:transform .2s}
+.three>div:hover{transform:translateY(-5px) rotate(-.5deg)}
+.three>div:nth-child(2){background:var(--lime);color:#0b0b10;border-color:transparent}
+.three>div:nth-child(2) p{color:#0a3a2a}
+.three>div:nth-child(3){background:var(--vio);color:#fff;border-color:transparent}
+.three>div:nth-child(3) p{color:rgba(255,255,255,.88)}
+.three b{width:46px;height:46px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font:700 1.05rem "Space Grotesk",sans-serif}
+.three h3{margin:46px 0 10px;font-size:1.9rem}.three p{color:var(--mute);margin:0}
+@media(max-width:820px){.three{grid-template-columns:1fr}.three h3{margin-top:28px}}
+#how h2{text-align:center;max-width:17ch;margin:0 auto}
+.dark{background:var(--alt)}
+.dark>.wrap>p{color:var(--mute)}
+.panel{background:var(--surf);border:1px solid var(--line);border-radius:32px;padding:44px;margin-top:38px;max-width:840px}
+@media(max-width:560px){.panel{padding:26px}}
+.prog{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:28px}
+.prog div{height:100%;background:var(--vio);border-radius:99px;transition:width .3s}
+.q{font:700 1.8rem/1.15 "Space Grotesk",sans-serif;letter-spacing:-.035em;margin:0 0 8px}
+.hint{color:var(--mute);font-size:.93rem;margin-bottom:22px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{font:600 .95rem "DM Sans",sans-serif;padding:12px 20px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);cursor:pointer;transition:transform .15s}
+.opt:hover{transform:translateY(-2px);border-color:var(--vio)}
+.opt[aria-pressed="true"]{border-color:var(--lime);background:var(--lime);color:#0b0b10}
+textarea,select,.f input{width:100%;font:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:var(--bg);color:var(--ink)}
+textarea:focus,select:focus,.f input:focus{border-color:var(--vio);outline:0;box-shadow:0 0 0 4px rgba(139,107,255,.25)}
+textarea{min-height:120px;resize:vertical}
+.nav2{display:flex;justify-content:space-between;margin-top:30px;gap:10px}
+.err{color:var(--warn);font-size:.9rem;min-height:1.3em;margin-top:8px}
+#report{margin-top:40px;display:none;max-width:840px}
+.rhead{background:var(--surf);border:1px solid var(--line);border-bottom:0;border-radius:32px 32px 0 0;padding:40px 44px 8px}
+.rhead h2{color:var(--ink)}.rhead p{margin:12px 0 0;color:var(--mute)}
+.rbody{background:var(--surf);border:1px solid var(--line);border-top:0;border-radius:0 0 32px 32px;padding:28px 44px 44px;display:grid;gap:32px}
+@media(max-width:560px){.rhead,.rbody{padding-left:24px;padding-right:24px}}
+.rbody h3{margin-bottom:12px;font-size:1.4rem}
+.rbody ul{margin:0;padding-left:1.2em}.rbody li{margin-bottom:8px;max-width:66ch}
+.bars{display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:96px 1fr 34px;gap:14px;align-items:center;font-size:.92rem;font-weight:500}
+.bar div{height:10px;background:var(--line);border-radius:99px;overflow:hidden}.bar div i{display:block;height:100%;background:var(--vio);border-radius:99px}
+.bar.low div i{background:var(--warn)}
+.bar b{font-weight:700;text-align:right}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.note{font-size:.86rem;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:30px 0 10px}
+.chip{font:600 .9rem "DM Sans",sans-serif;padding:9px 20px;border-radius:999px;border:1px solid var(--line);background:var(--surf);color:var(--ink);cursor:pointer}
+.chip:hover{border-color:var(--vio)}
+.chip[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:#0b0b10}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:22px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:26px;padding:28px;transition:transform .2s}
+.card:hover{transform:translateY(-4px) rotate(-.4deg)}
+.card.m{border-color:var(--vio);box-shadow:0 0 0 4px rgba(139,107,255,.22)}
+.card h3{margin-bottom:2px;font-size:1.35rem}.card .r{color:var(--blue);font-weight:700;font-size:.87rem;margin-bottom:12px}
+.card p{font-size:.94rem;color:var(--mute);margin-bottom:14px}
+.tag{display:inline-block;font-size:.76rem;font-weight:700;background:var(--alt);border-radius:999px;padding:3px 12px;margin:0 5px 5px 0;text-transform:capitalize}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:860px){.two{grid-template-columns:1fr;gap:36px}}
+.f{display:grid;gap:16px;background:var(--surf);border:1px solid var(--line);border-radius:32px;padding:36px}.f label{font-weight:600;font-size:.9rem;display:grid;gap:7px}
+footer{padding:44px 0;border-top:1px solid var(--line);color:var(--mute);font-size:.88rem}
+footer b{color:var(--ink)}
+@media print{header,section:not(#assess),.hero,.panel,.acts,#assess>.wrap>h2,#assess>.wrap>p,footer{display:none!important}section{padding:0}.dark,body{background:#fff;color:#000}.rhead,.rbody{box-shadow:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top"><i></i>Waypoint</a>
+<nav><a href="#how">How it works</a><a href="#assess">Assessment</a><a href="#people">Find help</a><a href="#join">Offer help</a><a class="cta-s" href="#assess">Assess my project</a></nav></div></header>
+<main id="top">
+<div class="hero"><div class="wrap">
+<div class="badge"><b>✦</b> Free AI-guided project assessment</div>
+<h1>You’ve got the idea. Let’s get it <span class="hl">moving.</span></h1>
+<p class="lead">A startup, a side project, a business, or something you’ve been thinking about for months. Tell us what you’re building, find out what you need, and meet the people who can help.</p>
+<form class="idea" id="heroForm"><input id="heroIdea" aria-label="What are you building?" placeholder="I’m building…  (a sentence is plenty)"><button class="btn p" type="submit">Assess my project</button></form>
+<div class="free"><b>100% free.</b> No sign-up required. <a href="#people">Explore the community</a></div>
+<div class="bento" aria-label="Illustration of the assessment, score and matches">
+<div class="bc"><small>Understand</small><div class="bub u">I’m building a booking app for dog groomers</div><div class="bub a">Nice. Where are you right now?</div><div><span class="mo">Just an idea</span><span class="mo on">Building it</span><span class="mo">Launched</span></div></div>
+<div class="bc"><small>Where you stand</small><div class="ring"><span>64</span></div><p class="cap">Readiness score (illustration)</p></div>
+<div class="bc"><small>Connect</small><p style="margin-bottom:12px;font-weight:600">Best matches for your next step</p><span class="mo">Developer</span><span class="mo">Designer</span><span class="mo">Mentor</span><p class="cap" style="margin:12px 0 0;text-align:left">Three relevant providers (illustration)</p></div>
+</div>
+</div></div>
+
+<section id="how"><div class="wrap">
+<h2>Whatever you’re building, find your way forward.</h2>
+<div class="three">
+<div><b>1</b><h3>Understand</h3><p>Answer a few smart questions. Get a personalized assessment of your business or project.</p></div>
+<div><b>2</b><h3>Discover</h3><p>Find resources, opportunities, expertise and solutions that fit your situation.</p></div>
+<div><b>3</b><h3>Connect</h3><p>Meet the people and businesses who can help you take the next step.</p></div>
+</div></div></section>
+
+<section id="assess" class="dark"><div class="wrap">
+<h2>Free project assessment</h2>
+<p style="margin-top:14px">Ten short questions, about five minutes. At the end we’ll ask for your email and any website or social links, so we can follow up and match you with the right people. Your details are only shared with providers you choose to connect with. You get a report you can copy or save as a PDF.</p>
+<div class="panel" style="color:var(--ink)" id="wiz"></div>
+<div id="report" style="color:var(--ink)"></div>
+</div></section>
+
+<section id="people"><div class="wrap">
+<h2>Find the people who can help</h2>
+<p style="margin-top:14px;color:var(--mute)">Developers, designers, agencies, advisors and collaborators. Run the assessment and the best matches are highlighted for you.</p>
+<p class="note">These are sample profiles to show how the directory will work. Real profiles are added after review.</p>
+<div class="chips" id="chips"></div>
+<div class="grid" id="dir"></div>
+</div></section>
+
+<section id="join" style="background:var(--alt);border-top:1px solid var(--line)"><div class="wrap two">
+<div><h2>Got skills builders need?</h2>
+<p style="margin-top:14px;color:var(--mute)">Freelancers, agencies, mentors and investors: list yourself and get found by people with a project that fits what you do. Listing is free during launch.</p></div>
+<form class="f" id="joinForm">
+<label>Name or business<input required name="n" maxlength="80"></label>
+<label>What do you offer?<select name="o"><option>Development</option><option>Design</option><option>Marketing</option><option>Legal and finance</option><option>Mentoring</option><option>Funding</option><option>Co-founding</option></select></label>
+<label>How can you help builders?<textarea required name="d" maxlength="400"></textarea></label>
+<label>Website or profile link<input name="l" type="url" placeholder="https://"></label>
+<button class="btn p" type="submit">Submit my profile</button>
+<div class="note" id="joinMsg" role="status"></div>
+</form></div></section>
+</main>
+<footer><div class="wrap"><b>Waypoint</b> is a working name, pending checks of competitors, domains and trademarks. The assessment is a guided, rules-based review to help you think; it is not professional advice.</div></footer>
+
+<script>
+const OPT=(a)=>a.map(x=>({k:x[0],t:x[1]}));
+const STEPS=[
+{id:"what",q:"Tell us about your business or project",h:"What it does, who it’s for, and how long you’ve been at it.",t:"text",ph:"e.g. A booking app for independent dog groomers"},
+{id:"type",q:"What kind of project is it?",t:"one",o:OPT([["startup","Startup"],["side","Side project"],["biz","Existing business"],["creative","Creative or community project"]])},
+{id:"stage",q:"Where are you right now?",t:"one",o:OPT([["0","Just an idea"],["1","Researching and validating"],["2","Building the first version"],["3","Launched, early traction"],["4","Stalled or struggling"]])},
+{id:"goal",q:"What’s your main goal for the next 90 days?",t:"one",o:OPT([["clarity","Get clear on the idea"],["first","Launch a first version"],["customers","Get customers or users"],["revenue","Grow revenue"],["team","Build a team"],["fund","Raise money"]])},
+{id:"problems",q:"What problems are you facing right now?",h:"Be specific: sales, tech, cash flow, time, anything.",t:"text",ph:"e.g. People visit the site but nobody books"},
+{id:"blockers",q:"Which of these hold you back?",h:"Pick all that apply.",t:"multi",o:OPT([["start","I don’t know where to start"],["unclear","My direction is unclear"],["customers","I can’t reach customers"],["tech","I lack technical skills"],["brand","I lack design or brand"],["money","I lack funding"],["time","I lack time or a team"]])},
+{id:"needs",q:"What kind of help would move you forward?",h:"Pick all that apply.",t:"multi",o:OPT([["dev","Developer"],["design","Designer"],["marketing","Marketing"],["cofounder","Co-founder"],["legal","Legal or finance"],["mentor","Mentor"],["funding","Funding"]])},
+{id:"budget",q:"What can you spend on help?",t:"one",o:OPT([["none","Nothing yet"],["low","Under $500"],["mid","$500 to $5,000"],["high","More than $5,000"]])},
+{id:"online",q:"Where can we find you online?",h:"Leave blank anything you don’t have yet.",t:"form",fl:[["site","Website","text","example.com"],["ig","Instagram handle","text","@yourhandle"],["fb","Facebook page","text","facebook.com/yourpage"],["other","Other links (LinkedIn, TikTok, X, app store)","text",""]]},
+{id:"contact",q:"How can we reach you?",h:"We use this to follow up on your report and make introductions.",t:"form",fl:[["name","Your name","text","",1],["email","Email","email","",1],["phone","Phone or WhatsApp (optional)","tel",""],["co","Business name (optional)","text",""],["consent","I agree to be contacted about my project, and to Waypoint sharing my details with providers I choose to connect with.","check","",1]]}];
+const A={};let si=0;
+const $=s=>document.querySelector(s);
+function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function render(){const s=STEPS[si],w=$("#wiz");
+w.innerHTML=`<div class="prog"><div style="width:${(si)/STEPS.length*100}%"></div></div><p class="q">${s.q}</p>${s.h?`<p class="hint">${s.h}</p>`:`<p class="hint">Question ${si+1} of ${STEPS.length}</p>`}<div id="inp"></div><div class="err" id="err" role="alert"></div><div class="nav2"><button class="btn" id="back" ${si?"":"disabled style='opacity:.4'"}>Back</button><button class="btn p" id="next">${si==STEPS.length-1?"Show my report":"Continue"}</button></div>`;
+const i=$("#inp");
+if(s.t=="text"){i.innerHTML=`<textarea id="ta" aria-label="${s.q}" placeholder="${s.ph||""}">${A[s.id]||""}</textarea>`}
+else if(s.t=="form"){const d=A[s.id]||{};i.innerHTML=`<div class="f">${s.fl.map(f=>f[2]=="check"?`<label style="display:flex;gap:10px;align-items:flex-start;font-weight:400"><input type="checkbox" id="f_${f[0]}" style="width:auto;margin-top:5px" ${d[f[0]]?"checked":""}><span>${f[1]}</span></label>`:`<label>${f[1]}<input id="f_${f[0]}" type="${f[2]}" placeholder="${f[3]||""}" value="${(d[f[0]]||"").replace(/"/g,"&quot;")}"></label>`).join("")}</div>`}
+else{i.innerHTML=`<div class="opts">${s.o.map(o=>`<button type="button" class="opt" data-k="${o.k}" aria-pressed="${s.t=="one"?A[s.id]==o.k:(A[s.id]||[]).includes(o.k)}">${o.t}</button>`).join("")}</div>`;
+i.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{const k=b.dataset.k;
+if(s.t=="one"){A[s.id]=k;i.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed",x==b))}
+else{const a=A[s.id]=A[s.id]||[];const j=a.indexOf(k);j>-1?a.splice(j,1):a.push(k);b.setAttribute("aria-pressed",j==-1)}})}
+$("#back").onclick=()=>{if(si){si--;render()}};
+$("#next").onclick=()=>{if(s.t=="text"){const v=$("#ta").value.trim();if(v.length<8){$("#err").textContent="Add a short description so the report can fit your project.";return}A[s.id]=v}
+else if(s.t=="form"){const d={};for(const f of s.fl){const e=$("#f_"+f[0]);d[f[0]]=f[2]=="check"?e.checked:e.value.trim();if(f[4]&&!d[f[0]]){$("#err").textContent=f[2]=="check"?"Tick the box to continue.":"Please fill in your "+f[1].toLowerCase()+".";return}if(f[2]=="email"&&d[f[0]]&&!/^\S+@\S+\.\S+$/.test(d[f[0]])){$("#err").textContent="Enter a valid email address.";return}}A[s.id]=d}
+else if(s.t=="one"&&A[s.id]==null){$("#err").textContent="Choose one option to continue.";return}
+else if(s.t=="multi"&&!(A[s.id]||[]).length){$("#err").textContent="Choose at least one option, or the closest fit.";return}
+if(si<STEPS.length-1){si++;render()}else report()}}
+const L=(o,k)=>STEPS.find(s=>s.id==o).o.find(x=>x.k==k).t;
+const PROB={start:"No clear first step. Fix: write a one-page plan with a single measurable goal for the next 30 days.",unclear:"The direction isn’t settled. Fix: define one customer, one problem and one promise, in one sentence each.",customers:"Customers aren’t finding you. Fix: pick one channel and talk to 10 people in your target group this month.",tech:"A skills gap on the build side. Fix: scope the smallest version, then hire a developer for that scope only, or use no-code tools.",brand:"Design and brand will hold back trust. Fix: a simple logo, one landing page and consistent visuals are enough for now.",money:"Funding is tight. Fix: validate with pre-sales or a paid pilot before you look for outside money.",time:"Time and people are limited. Fix: cut scope, then delegate one recurring task to a freelancer or collaborator."};
+const STEP={0:["Talk to 5 to 10 potential users about the problem, not your solution","Write a one-page brief: who it’s for, the problem, why now","Sketch the smallest version that could test the idea"],
+1:["Run a simple test: a landing page, waitlist or pre-sale","Decide what result would prove the idea works, before you test","List your three biggest assumptions and test the riskiest first"],
+2:["Cut the first version down to one core job it does well","Set a launch date within 6 weeks and work back from it","Line up your first 10 users before you finish building"],
+3:["Find where your best early users came from and double down there","Track one number every week (signups, sales or active users)","Ask five users what almost stopped them from buying"],
+4:["Write down what changed since it last worked","Interview three past customers or users about why they left or stalled","Choose one fix to try for 30 days before changing anything else"]};
+const OPP={startup:"Startup programs, accelerators and founder communities often give free credits and mentoring. Apply early.",side:"Side projects grow fastest with a public build log and a small group of early testers.",biz:"Existing businesses often leave money in repeat customers, referrals and partnerships with complementary services.",creative:"Grants, sponsorships and community partnerships can fund creative projects without giving up ownership."};
+let ranked=[];
+function score(){const st=+A.stage,b=A.blockers,n=A.needs;
+const m=(v,k)=>Math.max(1,Math.min(5,v-(b.includes(k)?1:0)));
+return[["Clarity",m([2,3,4,4,3][st],"unclear")],["Validation",m([1,2,3,4,3][st],"customers")],["Build",m([1,1,3,5,4][st],"tech")],["Reach",m([1,1,2,3,2][st],"customers")],["Resources",Math.max(1,5-Math.ceil(n.length*.7)-(b.includes("money")?1:0))]]}
+function report(){const sc=score(),st=+A.stage,low=sc.filter(x=>x[1]<=2).map(x=>x[0]);
+const lst=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+ranked=DIR.map(p=>({p,s:p.k.filter(k=>A.needs.includes(k)).length})).filter(x=>x.s).sort((a,b)=>b.s-a.s);
+const top=ranked.slice(0,3).map(x=>x.p);
+const missing=[...new Set([...A.needs.map(n=>L("needs",n)+" support"),...(low.length?low.map(l=>"Stronger "+l.toLowerCase()):[])])];
+const R={
+sum:`You’re working on: “${A.what}”. It’s a ${L("type",A.type).toLowerCase()} at the stage “${L("stage",A.stage).toLowerCase()}”, with a 90-day goal to ${L("goal",A.goal).toLowerCase()}.`,
+bars:sc,miss:missing,prob:[...(A.problems?["In your words: “"+A.problems+"”"]:[]),...A.blockers.map(b=>PROB[b])],
+res:[...A.needs.map(n=>L("needs",n)),A.budget=="none"?"Free and low-cost options first: templates, communities, no-code tools":"A budget of "+L("budget",A.budget).toLowerCase()+" can fund one focused piece of work"],
+who:top.map(p=>p.n+" ("+p.r+")"),opp:OPP[A.type],steps:STEP[st]};
+window.RP=R;sendLead(R);
+$("#wiz").style.display="none";const el=$("#report");el.style.display="block";
+el.innerHTML=`<div class="rhead"><h2>Your Waypoint report</h2><p>${R.sum}</p></div><div class="rbody">
+<div><h3>Where you stand</h3><div class="bars">${sc.map(x=>`<div class="bar ${x[1]<=2?"low":""}"><span>${x[0]}</span><div><i style="width:${x[1]*20}%"></i></div><b>${x[1]}/5</b></div>`).join("")}</div></div>
+<div><h3>What’s missing</h3>${lst(R.miss)}</div>
+<div><h3>Problems to solve</h3>${lst(R.prob)}</div>
+<div><h3>Resources you need</h3>${lst(R.res)}</div>
+<div><h3>Who can help</h3>${top.length?lst(R.who):"<p>No matches yet. Browse the directory below.</p>"}</div>
+<div><h3>An opportunity you might be overlooking</h3><p>${R.opp}</p></div>
+<div><h3>Your next 30 days</h3>${lst(R.steps)}</div>
+<div class="acts"><button class="btn p" id="copy">Copy report</button><button class="btn" onclick="window.print()">Save as PDF</button><a class="btn" href="#people">See all matches</a><button class="btn" id="again">Start over</button></div>
+<div class="note" id="cm" role="status">Scores are estimates from your answers, meant to start a conversation, not a verdict.</div></div>`;
+$("#copy").onclick=()=>{const t=txt(R);(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>$("#cm").textContent="Copied to your clipboard.").catch(()=>{const a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");$("#cm").textContent="Copied to your clipboard."}catch(e){$("#cm").textContent="Copy didn’t work here. Use Save as PDF instead."}a.remove()})};
+$("#again").onclick=()=>{si=0;for(const k in A)delete A[k];ranked=[];el.style.display="none";$("#wiz").style.display="";render();drawDir();$("#assess").scrollIntoView()};
+drawDir();el.scrollIntoView()}
+async function sendLead(R){const lead={at:new Date().toISOString(),contact:A.contact,online:A.online,what:A.what,problems:A.problems,type:A.type,stage:A.stage,goal:A.goal,blockers:A.blockers,needs:A.needs,budget:A.budget,scores:Object.fromEntries(R.bars)};
+store("waypoint_lead",JSON.stringify(lead));let sent=false;
+try{const c=await claude.use("db"),u=await claude.use("user");if(c&&u){await c.collection("leads").doc(await u.id()).set(lead);sent=true}}catch(e){}
+const m=$("#cm");if(m)m.textContent=sent?"Your details were sent to the Waypoint team. We’ll be in touch.":"Your details are saved on this device."}
+function txt(R){const l=a=>a.map(x=>"- "+x).join("\n");return`WAYPOINT REPORT\n\n${R.sum}\n\nWHERE YOU STAND\n${R.bars.map(x=>x[0]+": "+x[1]+"/5").join("\n")}\n\nWHAT'S MISSING\n${l(R.miss)}\n\nPROBLEMS TO SOLVE\n${l(R.prob)}\n\nRESOURCES YOU NEED\n${l(R.res)}\n\nWHO CAN HELP\n${l(R.who)}\n\nOPPORTUNITY\n${R.opp}\n\nNEXT 30 DAYS\n${l(R.steps)}`}
+const DIR=[
+{n:"Northlight Studio",r:"Brand and web design studio",k:["design"],d:"Logos, landing pages and simple design systems for early-stage products. Fixed-price packages."},
+{n:"Priya R.",r:"Freelance full-stack developer",k:["dev"],d:"Builds first versions in weeks with React and Node. Happy to scope a small test build."},
+{n:"Tidewater Growth",r:"Marketing agency",k:["marketing"],d:"Launch plans, email and paid social for products with their first customers."},
+{n:"Marcus H.",r:"Startup lawyer",k:["legal"],d:"Company setup, contracts and terms for founders. Offers a free first call."},
+{n:"Ada O.",r:"Product mentor",k:["mentor"],d:"Ex-product lead who coaches builders on validation and prioritization, one session at a time."},
+{n:"Kiln Labs",r:"Software development agency",k:["dev","design"],d:"Product design and engineering teams for builders ready to scale an MVP."},
+{n:"Sam O.",r:"Seeking a business co-founder",k:["cofounder"],d:"Technical founder with a working prototype looking for a partner to lead sales and growth."},
+{n:"Lumen Angels",r:"Angel investor network",k:["funding","mentor"],d:"Pre-seed checks and advice for founders with early proof of demand."}];
+let flt="all";
+function drawDir(){const tags=["all",...new Set(DIR.flatMap(p=>p.k))];
+$("#chips").innerHTML=tags.map(t=>`<button class="chip" aria-pressed="${flt==t}" data-t="${t}">${t=="all"?"All":t=="cofounder"?"Co-founder":t[0].toUpperCase()+t.slice(1)}</button>`).join("");
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{flt=c.dataset.t;drawDir()});
+const mt=new Set(ranked.filter(x=>x.s).map(x=>x.p.n));
+const list=DIR.filter(p=>flt=="all"||p.k.includes(flt)).sort((a,b)=>mt.has(b.n)-mt.has(a.n));
+$("#dir").innerHTML=list.map(p=>`<article class="card ${mt.has(p.n)?"m":""}"><h3>${p.n}</h3><div class="r">${p.r}</div><p>${p.d}</p>${p.k.map(k=>`<span class="tag">${k}</span>`).join("")}${mt.has(p.n)?'<span class="tag" style="border-color:var(--blue);color:var(--blue)">Matches your needs</span>':""}</article>`).join("")}
+$("#heroForm").onsubmit=e=>{e.preventDefault();const v=$("#heroIdea").value.trim();if(v){A.what=v;si=Math.max(si,0)}render();$("#assess").scrollIntoView()};
+$("#joinForm").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);store("waypoint_provider",JSON.stringify(Object.fromEntries(f)));e.target.reset();$("#joinMsg").textContent="Thanks. Your profile is ready for review. In this preview it is saved only on this device; connect a form or database to collect real submissions."};
+render();drawDir();
+</script>
+</body>
+</html>
