@@ -6,6 +6,8 @@
 
 A project assessment and discovery platform concept that helps early-stage founders and business owners understand what they need next, explore useful resources, and connect with people who can help.
 
+<img src="https://raw.githubusercontent.com/JFUIX/waypoint/main/screenshots/assesment.png" width="100%" alt="Waypoint project assessment screenshot">
+
 [Overview](#about-the-project) · [Problem](#problem-it-addresses) · [Features](#key-features) · [Tech stack](#technology-stack) · [Live demo](#live-demo)
 
 </div>
