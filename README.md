@@ -1,6 +1,6 @@
 <div align="center">
 
-# Waypoint
+# TurningPoint
 
 **You’ve got the idea. Let’s get it moving.**
 
