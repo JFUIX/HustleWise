@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Waypoint – Find your way forward</title>
+<title>Turning Point – Find your way forward</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -27,6 +27,7 @@ section{padding:100px 0}
 header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{font:700 1.4rem "Space Grotesk",sans-serif;text-decoration:none;display:flex;gap:10px;align-items:center;letter-spacing:-.04em}
+
 .logo i{width:28px;height:28px;border-radius:10px;background:var(--lime);display:block;position:relative}
 .logo i::after{content:"";position:absolute;inset:8px;border-radius:50%;background:#0b0b10}
 nav{display:flex;gap:26px;font-size:.93rem;font-weight:500;align-items:center}
@@ -130,7 +131,7 @@ footer b{color:var(--ink)}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="#top"><i></i>Waypoint</a>
+<header><div class="wrap"><a class="logo" href="#top" aria-label="Turning Point">Turning Point</a>
 <nav><a href="#vision">Vision</a><a href="#how">How it works</a><a href="#assess">Assessment</a><a href="#people">Find help</a><a href="#join">Offer help</a><a class="cta-s" href="#assess">Assess my project</a></nav></div></header>
 <main id="top">
 <div class="hero"><div class="wrap">
@@ -149,7 +150,7 @@ footer b{color:var(--ink)}
 
 <section id="vision" style="background:var(--alt);border-top:1px solid var(--line)"><div class="wrap two" style="align-items:start">
 <div><h2>From ideas to <span class="hl">execution.</span></h2>
-<p style="margin-top:22px;color:var(--mute)">Waypoint is where individuals, entrepreneurs and businesses turn ideas and ambitions into actionable projects, through assessment, guidance, planning, resources and the right professional connections.</p>
+<p style="margin-top:22px;color:var(--mute)">Turning Point is where individuals, entrepreneurs and businesses turn ideas and ambitions into actionable projects, through assessment, guidance, planning, resources and the right professional connections.</p>
 <p style="color:var(--mute)">We’re building toward one guided journey, from the first thought to a finished project, with every step in one place.</p></div>
 <div>
 <div class="vr"><b>Direction</b><p>Understand what you’re trying to achieve.</p></div>
@@ -200,7 +201,7 @@ footer b{color:var(--ink)}
 <button class="btn p" type="submit">Send feedback</button>
 <div class="note" id="fbMsg" role="status"></div></form></div></section>
 </main>
-<footer><div class="wrap"><b>Waypoint</b> is a working name, pending checks of competitors, domains and trademarks. The assessment is a guided, rules-based review to help you think; it is not professional advice.</div></footer>
+<footer><div class="wrap"><b>Turning Point</b> is a working name, pending checks of competitors, domains and trademarks. The assessment is a guided, rules-based review to help you think; it is not professional advice.</div></footer>
 
 <script>
 const OPT=(a)=>a.map(x=>({k:x[0],t:x[1]}));
@@ -214,7 +215,7 @@ const STEPS=[
 {id:"needs",q:"What kind of help would move you forward?",h:"Pick all that apply.",t:"multi",o:OPT([["dev","Developer"],["design","Designer"],["marketing","Marketing"],["cofounder","Co-founder"],["legal","Legal or finance"],["mentor","Mentor"],["funding","Funding"]])},
 {id:"budget",q:"What can you spend on help?",t:"one",o:OPT([["none","Nothing yet"],["low","Under $500"],["mid","$500 to $5,000"],["high","More than $5,000"]])},
 {id:"online",q:"Where can we find you online?",h:"Leave blank anything you don’t have yet.",t:"form",fl:[["site","Website","text","example.com"],["ig","Instagram handle","text","@yourhandle"],["fb","Facebook page","text","facebook.com/yourpage"],["other","Other links (LinkedIn, TikTok, X, app store)","text",""]]},
-{id:"contact",q:"How can we reach you?",h:"We use this to follow up on your report and make introductions.",t:"form",fl:[["name","Your name","text","",1],["email","Email","email","",1],["phone","Phone or WhatsApp (optional)","tel",""],["co","Business name (optional)","text",""],["consent","I agree to be contacted about my project, and to Waypoint sharing my details with providers I choose to connect with.","check","",1]]}];
+{id:"contact",q:"How can we reach you?",h:"We use this to follow up on your report and make introductions.",t:"form",fl:[["name","Your name","text","",1],["email","Email","email","",1],["phone","Phone or WhatsApp (optional)","tel",""],["co","Business name (optional)","text",""],["consent","I agree to be contacted about my project, and to Turning Point sharing my details with providers I choose to connect with.","check","",1]]}];
 const A={};let si=0;
 const $=s=>document.querySelector(s);
 function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
@@ -257,7 +258,7 @@ res:[...A.needs.map(n=>L("needs",n)),A.budget=="none"?"Free and low-cost options
 who:top.map(p=>p.n+" ("+p.r+")"),opp:OPP[A.type],steps:STEP[st]};
 window.RP=R;sendLead(R);
 $("#wiz").style.display="none";const el=$("#report");el.style.display="block";
-el.innerHTML=`<div class="rhead"><h2>Your Waypoint report</h2><p>${R.sum}</p></div><div class="rbody">
+el.innerHTML=`<div class="rhead"><h2>Your Turning Point report</h2><p>${R.sum}</p></div><div class="rbody">
 <div><h3>Where you stand</h3><div class="bars">${sc.map(x=>`<div class="bar ${x[1]<=2?"low":""}"><span>${x[0]}</span><div><i style="width:${x[1]*20}%"></i></div><b>${x[1]}/5</b></div>`).join("")}</div></div>
 <div><h3>What’s missing</h3>${lst(R.miss)}</div>
 <div><h3>Problems to solve</h3>${lst(R.prob)}</div>
@@ -273,8 +274,8 @@ drawDir();el.scrollIntoView()}
 async function sendLead(R){const lead={at:new Date().toISOString(),contact:A.contact,online:A.online,what:A.what,problems:A.problems,type:A.type,stage:A.stage,goal:A.goal,blockers:A.blockers,needs:A.needs,budget:A.budget,scores:Object.fromEntries(R.bars)};
 store("waypoint_lead",JSON.stringify(lead));let sent=false;
 try{const c=await claude.use("db"),u=await claude.use("user");if(c&&u){await c.collection("leads").doc(await u.id()).set(lead);sent=true}}catch(e){}
-const m=$("#cm");if(m)m.textContent=sent?"Your details were sent to the Waypoint team. We’ll be in touch.":"Your details are saved on this device."}
-function txt(R){const l=a=>a.map(x=>"- "+x).join("\n");return`WAYPOINT REPORT\n\n${R.sum}\n\nWHERE YOU STAND\n${R.bars.map(x=>x[0]+": "+x[1]+"/5").join("\n")}\n\nWHAT'S MISSING\n${l(R.miss)}\n\nPROBLEMS TO SOLVE\n${l(R.prob)}\n\nRESOURCES YOU NEED\n${l(R.res)}\n\nWHO CAN HELP\n${l(R.who)}\n\nOPPORTUNITY\n${R.opp}\n\nNEXT 30 DAYS\n${l(R.steps)}`}
+const m=$("#cm");if(m)m.textContent=sent?"Your details were sent to the Turning Point team. We’ll be in touch.":"Your details are saved on this device."}
+function txt(R){const l=a=>a.map(x=>"- "+x).join("\n");return`TURNING POINT REPORT\n\n${R.sum}\n\nWHERE YOU STAND\n${R.bars.map(x=>x[0]+": "+x[1]+"/5").join("\n")}\n\nWHAT'S MISSING\n${l(R.miss)}\n\nPROBLEMS TO SOLVE\n${l(R.prob)}\n\nRESOURCES YOU NEED\n${l(R.res)}\n\nWHO CAN HELP\n${l(R.who)}\n\nOPPORTUNITY\n${R.opp}\n\nNEXT 30 DAYS\n${l(R.steps)}`}
 const DIR=[
 {n:"Northlight Studio",r:"Brand and web design studio",k:["design"],d:"Logos, landing pages and simple design systems for early-stage products. Fixed-price packages."},
 {n:"Priya R.",r:"Freelance full-stack developer",k:["dev"],d:"Builds first versions in weeks with React and Node. Happy to scope a small test build."},
@@ -302,7 +303,7 @@ $("#fbForm").onsubmit=async e=>{e.preventDefault();const m=$("#fbMsg");if(!fbR){
 const f=Object.fromEntries(new FormData(e.target));const fb={at:new Date().toISOString(),rating:fbR,message:f.m,email:f.e||""};
 store("waypoint_feedback",JSON.stringify(fb));let how="";
 try{const c=await claude.use("db"),u=await claude.use("user");if(c&&u){await c.collection("feedback").doc(await u.id()).set(fb);how="sent"}}catch(x){}
-if(!how&&FB_EMAIL){how="mail";location.href="mailto:"+FB_EMAIL+"?subject="+encodeURIComponent("Waypoint feedback ("+fbR+"/5)")+"&body="+encodeURIComponent(fb.message+"\n\nReply to: "+fb.email)}
+if(!how&&FB_EMAIL){how="mail";location.href="mailto:"+FB_EMAIL+"?subject="+encodeURIComponent("Turning Point feedback ("+fbR+"/5)")+"&body="+encodeURIComponent(fb.message+"\n\nReply to: "+fb.email)}
 m.textContent=how=="sent"?"Thank you. Your feedback helps us improve.":how=="mail"?"Your email app should open with your feedback. Press send to submit it.":"Thanks. For now your feedback is saved on this device only.";
 if(how=="sent"){e.target.reset();fbR=0;document.querySelectorAll("#fbRate .chip").forEach(x=>x.setAttribute("aria-pressed","false"))}};
 render();drawDir();
