@@ -1,117 +1,116 @@
-<div align="center">
+# HustleWise
 
-# Waypoint
+**From ideas to execution.**
 
-**Big ideas need a way forward.**
+HustleWise is a business discovery and execution platform for founders and business owners. It guides users through a short assessment, produces a personalised readiness report, and (only with explicit consent) connects them with relevant professionals and services.
 
-A consent-first project assessment prototype that helps early-stage founders and business owners understand where they stand, see what to do next, and explore the kinds of support that could help.
+**Live site:** https://jfuix.github.io/TurningPoint/
 
-<!-- Replace with your own screenshot, e.g. screenshots/assessment.png -->
-<img src="screenshots/assessment.png" width="100%" alt="Waypoint assessment screenshot">
-
-[Overview](#about-the-project) · [Problem](#problem-it-addresses) · [Features](#key-features) · [How it works](#how-it-works) · [Tech stack](#technology-stack) · [Live demo](#live-demo) · [Limitations](#project-status--limitations)
-
-</div>
+> **Status:** Prototype. Scores and provider listings shown on the site are illustrative.
 
 ---
 
-## About the Project
+## What it does
 
-Waypoint is a platform concept built around a simple idea: people working on a business or project should be able to understand their next steps and find relevant support without searching in ten different places.
+HustleWise is built around three ideas:
 
-Visitors choose a starting point (starting something new, or growing an existing business), tell Waypoint a little about their project, answer a short guided assessment, and receive a report with a readiness score, a category breakdown, a 30-day action plan, and suggested areas where outside support might help.
+1. **Clarity**: understand your idea or business through a structured assessment.
+2. **Direction**: get a personalised report and an actionable 30-day plan.
+3. **Connections**: find relevant professionals and services when you're ready for expert help.
 
-Waypoint is deliberately honest about what it is: a **rules-based assessment**, not AI analysis and not professional advice. Data use is explained up front, and nothing is shared with a provider without the visitor's explicit opt-in.
+### User flow
 
-## Problem It Addresses
+| Step | What happens |
+|------|--------------|
+| 1. Choose your journey | Pick "I'm starting something" or "I already have a business". This shapes the questions and the report. |
+| 2. Tell us about you | Name, email, optional phone, and preferred contact method (email, phone, or WhatsApp). |
+| 3. Guided assessment | A 10-question questionnaire about the project, goals, and challenges. |
+| 4. Data and consent | Plain-language summary of what is collected and how it is used, with a required consent box and an optional opt-in for provider introductions. |
+| 5. Your report | Readiness score (0-100), category breakdown, gaps, a 30-day action plan, and suggested support categories. Users can copy the report or save it as a PDF. |
+| 6. Submitted | Confirmation screen with a withdrawal token for revoking consent. |
 
-Starting or growing a project can be overwhelming. Founders often know they need help but not what kind, where to find it, or what to prioritize first.
+### How scoring works
 
-Waypoint offers a structured starting point: understand the project, identify the immediate needs, and make it easier to move forward, with the right kind of help available when (and only if) the person wants it.
+Each answer is scored on a 4-point scale and grouped into five categories: **clarity, validation, build readiness, reach, and resources**. Categories are weighted differently for startups and established businesses, then combined into a single 0-100 score.
 
-## Key Features
+The assessment is **rules-based, not AI-driven**, and is meant as a directional prompt, not professional advice.
 
-- **Two journeys**: "I'm starting something" and "I already have a business", each with its own intake fields, questions, scoring weights, and report copy
-- **Intake form**: name, email, optional phone, preferred contact method, plus journey-specific questions (idea and audience, or business name, industry, size, and main problems)
-- **Guided assessment**: a 10-question, one-at-a-time questionnaire with a progress bar and a four-point answer scale
-- **Readiness score**: a weighted, rules-based score from 0 to 100 across clarity, validation, build readiness, reach, and resources
-- **Personalized report**: category breakdown (Strong / In progress / Needs work), a 30-day action list chosen by score band, and suggested support categories matched from the visitor's stated needs
-- **Consent-first data handling**: a plain-language data notice, a required consent checkbox to generate the report, a separate optional checkbox to be contacted, and a consent text version recorded with each submission
-- **Withdrawal token**: each submission gets a random token the visitor can use to request withdrawal of consent
-- **Report actions**: copy the report as text, or save it as a PDF through the browser print dialog
-- **Provider network pitch**: a "For Professionals" section explaining the consent-based introduction model, with an invite request link
-- **Responsive interface**: layouts designed for desktop and mobile
-- **Local data fallback**: submissions are saved in the browser (last 50 kept) unless a backend URL is configured
+---
 
-## How It Works
+## Site sections
 
-1. **Choose your journey**: starting something new, or growing what you already have
-2. **Tell us about it**: a short intake form
-3. **Complete the assessment**: 10 guided questions
-4. **Review the consent notice**: required consent to generate the report, optional consent to be contacted
-5. **Get your report**: score, category breakdown, 30-day actions, and suggested support areas
+- **Home**: hero, example project snapshot, and the HustleWise approach
+- **How It Works**: the four-step journey
+- **Explore Solutions**: Web & product, Growth & marketing, Business & finance (category previews, not live listings)
+- **For Professionals**: information and invite request for service providers joining the network
+- **About**: principles, team, and FAQ
+- **Legal pages**: Privacy Policy, Terms of Use, and a Withdraw Consent page
 
-## Technology Stack
+---
 
-- **HTML5**: page structure, assessment screens, forms, and report
-- **CSS3**: responsive layouts, custom properties, and interface components, using a system font stack (Inter if installed)
-- **Vanilla JavaScript**: screen routing, questionnaire flow, scoring logic, report generation, and browser-side storage
-- **Optional backend**: set `CONFIG.backendUrl` in the script to a POST endpoint (for example a Supabase Edge Function) to send submissions to your own server; the browser copy is still kept
+## Privacy and consent
 
-The project is a single `index.html` file with no dependencies, package install, or build step.
+The product is designed to be consent-first:
 
-## Live Demo
+- No account is required to take the assessment.
+- Required consent covers generating the report; provider introductions are a separate, optional opt-in.
+- Every introduction requires the user's explicit consent.
+- Each submission issues a withdrawal token so consent can be revoked at any time.
+- Users can request deletion by emailing `privacy@hustlewise.com`.
 
-<!-- Replace with your own link once deployed, e.g. GitHub Pages -->
-[Open Waypoint](https://your-username.github.io/waypoint/)
+See the in-site Privacy Policy and Terms of Use for full details.
 
-## Run Locally
+---
+
+## Tech stack
+
+<!-- Fill this in to match the repo -->
+- HTML, CSS, and JavaScript
+- Hosted on GitHub Pages
+
+## Running locally
 
 ```bash
-git clone https://github.com/your-username/waypoint.git
-cd waypoint
+# Clone the repository
+git clone https://github.com/jfuix/TurningPoint.git
+cd TurningPoint
 
-# Start a local server
-python -m http.server 8080
+# Open index.html in your browser, or serve it locally:
+python3 -m http.server 8000
+# then visit http://localhost:8000
 ```
 
-Open `http://localhost:8080` in your browser.
+## Project structure
 
-## Configuration
-
-At the top of the script:
-
-```js
-const CONFIG = {
-  backendUrl: "",   // e.g. "https://<project>.supabase.co/functions/v1/submit-lead"
-  consent: { version: "1.0", text: "..." }
-};
+<!-- Update to match the actual files in the repo -->
+```
+TurningPoint/
+├── index.html      # Main page and assessment flow
+├── ...             # Styles, scripts, and assets
+└── README.md
 ```
 
-If `backendUrl` is empty, or the request fails, the submission is saved only to the browser's `localStorage` under `waypoint.leads.v1`. Bump `consent.version` whenever you change the consent wording.
+## Deployment
 
-## Project Status & Limitations
+The site is deployed with GitHub Pages. Pushing to the configured branch publishes the update at https://jfuix.github.io/TurningPoint/.
 
-**Status:** Front-end prototype / platform concept.
+---
 
-- The assessment uses predefined rules and scoring logic. It is **not** AI-powered, and the interface says so.
-- The "Explore Solutions" cards are category previews, not live listings. There is no provider directory, verification, messaging, booking, or payment flow yet.
-- Support suggestions are matched by simple keyword rules on the visitor's stated needs, with a fallback based on their lowest-scoring categories. This is not an intelligent recommendation system.
-- Without a configured backend, submissions are not sent anywhere and are not available across devices.
-- Consent withdrawal is not automated: the token is shown to the visitor, but you need to build the withdrawal flow (or handle requests by email) yourself.
-- The Privacy Policy and Terms links are placeholders and need real pages before any public launch.
-- Readiness scores and suggested actions are directional prompts, not professional advice or a measure of business potential.
-- Waypoint is a working name and has not been cleared for domain, competitor, or trademark conflicts.
+## Before going to production
 
-## Roadmap Ideas
+The site currently contains placeholders that should be completed before launch:
 
-- Connect a real backend for lead storage
-- Add real Privacy Policy and Terms pages
-- Automate consent withdrawal using the token
-- Email the report to the visitor
-- Add real, verified provider profiles
-- Save assessment progress so visitors can resume later
+- [ ] Add the registered legal entity name and country to the Privacy Policy
+- [ ] Specify the data storage region in the Privacy Policy
+- [ ] Set the governing-law jurisdiction in the Terms of Use
+- [ ] Replace illustrative provider categories with real provider profiles
+- [ ] Confirm the Open Graph image and canonical URLs point to the live domain
 
-## Credits
+## Contact
 
-Designed and developed by [your name](https://github.com/your-username).
+- General: hello@hustlewise.com
+- Privacy and data requests: privacy@hustlewise.com
+
+## License
+
+<!-- Add a license, e.g. MIT, or "All rights reserved." -->
