@@ -1,0 +1,43 @@
+/* HustleWise black theme: loads after the main styles and overrides colours only */
+:root{color-scheme:dark;--ink:#f2f2f2;--muted:#a3a3a3;--paper:#000;--white:#111;--green:#9be15d;--lime:#c9f27a;--line:#262626;--soft:#161d16;--good:#7fd36b;--warn:#f0a85a;--bad:#ff7a63;--focus:#6aa4ff}
+body{background:#000;color:var(--ink)}
+header{background:#000000e6}
+.links{color:#a3a3a3}.links a:hover{color:var(--lime)}
+.mark{background:var(--lime);color:#0a0a0a}
+.btn.dark{background:var(--green);color:#0a0a0a}
+.btn.light{background:#111;border-color:#262626;color:var(--ink)}
+.btn.light:hover{border-color:#3a3a3a}
+.hero:after{background:radial-gradient(circle,#9be15d26 0,transparent 68%)}
+.micro,.trustrow{color:#8a8a8a}.trustrow strong{color:#cfcfcf}
+.kicker,.stepper-top,.report-section h4{color:#8fd16a}
+.preview{background:#111;border-color:#262626;box-shadow:0 28px 70px #000}
+.pill{background:#9be15d22;color:#9be15d}
+.progress,.scoreline,.stepper-bar{background:#262626}
+.mini,.roadmap,.consent-box,.cat,.action-list li,.match{background:#1a1a1a}
+.check,.success-icon{background:#9be15d22;color:#9be15d}
+.pillar,.aud,.provider,.report-card,.app-card,.journey,.faq details,.founder,.testi{background:#111;border-color:#262626}
+.how{background:#08130f}
+.report{background:#070b08}
+.report-row{border-color:#262626}
+.roadmap li,.testi,.legal p,.legal li,.check-list li,.consent-box,.match b,.field-label{color:#cfcfcf}
+.avatar{background:#1a2a1a;color:var(--green)}
+.tag{background:#1a1a1a;color:#b5b5b5}
+.cta{background:var(--lime)}
+.cta h2,.cta .kicker,.cta p{color:#0a0a0a}
+.cta .btn.dark{background:#0a0a0a;color:var(--lime)}
+.journey:hover,.journey.sel{border-color:var(--green)}
+.journey.sel{background:#14210f}
+.field-input,.field-textarea,.field-select{background:#1a1a1a;border-color:#2e2e2e;color:var(--ink)}
+.field-input::placeholder,.field-textarea::placeholder{color:#6d6d6d}
+.field-input:focus,.field-textarea:focus,.field-select:focus{border-color:var(--green);box-shadow:0 0 0 3px #9be15d33}
+.chip{background:#111;border-color:#2e2e2e;color:#b5b5b5}
+.chip:hover{border-color:#4a4a4a}
+.chip.on{background:var(--green);border-color:var(--green);color:#0a0a0a}
+.cat-bar{background:#262626}
+.check-list li:before{background:#9be15d22;color:#9be15d}
+.report-card .score{color:var(--ink)}
+.founder .photo{color:var(--lime)}
+.faq details p{color:#a3a3a3}
+.legal a{color:var(--green)}
+@media print{*{background:#fff!important;color:#000!important;box-shadow:none!important}}
+.cat-top{color:#c4c4c4}.score-big small{color:#8a8a8a}
