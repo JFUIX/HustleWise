@@ -4,7 +4,7 @@
 
 HustleWise is a business discovery and execution platform for founders and business owners. It guides users through a short assessment, produces a personalised readiness report, and (only with explicit consent) connects them with relevant professionals and services.
 
-**Live site:** https://jfuix.github.io/TurningPoint/
+**Live site:** https://jfuix.github.io/HustleWise/
 
 > **Status:** Prototype. Scores and provider listings shown on the site are illustrative.
 
